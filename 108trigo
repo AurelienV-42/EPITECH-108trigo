@@ -1,0 +1,51 @@
+#!/usr/bin/python3
+
+from math import *
+import sys
+import argparse
+from Classmatrix import *
+
+n = len(sys.argv)
+if (sqrt(n) != n):
+    exit (84)
+
+parser = argparse.ArgumentParser(description = 'this is my 108trigo')
+parser.add_argument("opt", type = str, choices=("EXP", "COS", "SIN", "COSH", "SINH"))
+parser.add_argument("coef", nargs = n, type = float)
+
+try:
+    args = parser.parse_args()
+except:
+    print ("error when parsing arguments")
+    sys.exit(84)
+
+def print_tab(Matrix):
+     i = 0
+     n = 0
+     while (i != len(Matrix)):
+          while (n != len(Matrix[0])):
+               if (n == len(Matrix[0]) - 1):
+                   print (Matrix[i][n], end='')
+               else:
+                   print (Matrix[i][n], end='\t')
+               n += 1
+          i += 1
+          if (i == len(Matrix) and n == len(Matrix[0])):
+               return
+          if (n == len(Matrix[0])):
+               print ()
+          n = 0
+     return
+
+def print_space(Matrix):
+     i = 0
+     n = 0
+     while (i != len(Matrix)):
+          while (n != len(Matrix[0])):
+              
+
+
+# exponentiel : 1 + x + x²/2! + x³/3! + ...
+# cos h = 1 + ... + x²/2! + ... + x⁴/4! + ...
+# sin h =      x + ... + x³/2! + ... + x⁵/5! + ...
+# Matrice : A x B = (lA * cA) * (lB * cB)   avec cA = lB
